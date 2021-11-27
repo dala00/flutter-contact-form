@@ -19,12 +19,27 @@ class HttpClient {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      print(e);
+      return null;
+    }
+  }
+
+  Future<dynamic> post(String path, Map<String, dynamic> data) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/$path'),
+        body: jsonEncode(data),
+        headers: createHeaders(),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
       return null;
     }
   }
 
   Map<String, String> createHeaders() {
-    return {'Authorization': 'Bearer $applicationKey'};
+    return {
+      'Authorization': 'Bearer $applicationKey',
+      'Content-Type': 'application/json',
+    };
   }
 }

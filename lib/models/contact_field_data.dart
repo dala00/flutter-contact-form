@@ -7,4 +7,14 @@ class ContactFieldData {
 
   final ApplicationField applicationField;
   final TextEditingController? textEditingController;
+
+  dynamic getValue() {
+    switch (applicationField.type) {
+      case 'text':
+      case 'textarea':
+        return textEditingController?.text;
+      default:
+        return '';
+    }
+  }
 }
