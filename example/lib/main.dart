@@ -25,7 +25,10 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: const ContactForm(applicationKey: 'testkey'),
+        body: Container(
+          margin: const EdgeInsets.all(20),
+          child: const ContactForm(applicationKey: 'testkey'),
+        ),
       ),
     );
   }

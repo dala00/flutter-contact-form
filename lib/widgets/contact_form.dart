@@ -1,7 +1,6 @@
-library contact_form;
-
-import 'package:contact_form/models/application_field.dart';
+import 'package:contact_form/models/contact_field_data.dart';
 import 'package:contact_form/use_cases/get_application_use_case.dart';
+import 'package:contact_form/widgets/fields/contact_field.dart';
 import 'package:flutter/material.dart';
 
 class ContactForm extends StatefulWidget {
@@ -12,12 +11,16 @@ class ContactForm extends StatefulWidget {
 
   final String applicationKey;
 
+  static const double labelMargin = 8;
+
   @override
   _ContactFormState createState() => _ContactFormState();
 }
 
 class _ContactFormState extends State<ContactForm> {
-  List<ApplicationField> _applicationFields = [];
+  List<ContactFieldData> _contactFieldDataList = [];
+
+  static const double fieldMargin = 12;
 
   @override
   void initState() {
@@ -29,15 +32,28 @@ class _ContactFormState extends State<ContactForm> {
     final applicationFields =
         await GetApplicationUseCase(widget.applicationKey).invoke();
     setState(() {
-      _applicationFields = applicationFields;
+      _contactFieldDataList = applicationFields
+          .map((applicationField) => ContactFieldData(
+                applicationField: applicationField,
+                textEditingController: TextEditingController(),
+              ))
+          .toList();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: _applicationFields
-            .map((applicationField) => Text(applicationField.label))
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: _contactFieldDataList
+            .map(
+              (contactFieldData) => Container(
+                margin: const EdgeInsets.only(bottom: fieldMargin),
+                child: ContactField(
+                  contactFieldData: contactFieldData,
+                ),
+              ),
+            )
             .toList());
   }
 }
