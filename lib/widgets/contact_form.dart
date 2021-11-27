@@ -27,7 +27,7 @@ class _ContactFormState extends State<ContactForm> {
 
   Future<void> _initialize() async {
     final applicationFields =
-        await GetApplicationUseCase().invoke(widget.applicationKey);
+        await GetApplicationUseCase(widget.applicationKey).invoke();
     setState(() {
       _applicationFields = applicationFields;
     });

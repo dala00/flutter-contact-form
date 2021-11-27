@@ -1,13 +1,13 @@
-import 'dart:convert';
-
 import 'package:contact_form/models/application_field.dart';
-import 'package:http/http.dart';
+import 'package:contact_form/network/http_client.dart';
+import 'package:contact_form/use_cases/base_use_case.dart';
 
-class GetApplicationUseCase {
-  Future<List<ApplicationField>> invoke(String key) async {
-    final url = Uri.parse('http://192.168.11.12:3000/api/app/applications');
-    final response = await get(url, headers: {'Authorization': 'Bearer $key'});
-    final data = jsonDecode(response.body);
+class GetApplicationUseCase extends BaseUseCase {
+  GetApplicationUseCase(String applicationKey, {HttpClient? client})
+      : super(applicationKey, client: client);
+
+  Future<List<ApplicationField>> invoke() async {
+    final data = await client.get('applications');
     return (data['applicationFields'] as List<dynamic>)
         .cast<Map<String, dynamic>>()
         .map((json) => ApplicationField.fromJson(json))
