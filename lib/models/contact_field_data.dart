@@ -11,12 +11,13 @@ class ContactFieldData {
 
   dynamic getValue() {
     switch (applicationField.type) {
-      case 'text':
-      case 'textarea':
-        return textEditingController?.text;
+      case 'checkbox':
       case 'radio':
       case 'select':
         return value;
+      case 'text':
+      case 'textarea':
+        return textEditingController?.text;
       default:
         return value;
     }
