@@ -1,4 +1,5 @@
 import 'package:contact_form/models/contact_field_data.dart';
+import 'package:contact_form/widgets/fields/contact_radio_field.dart';
 import 'package:contact_form/widgets/fields/contact_select_field.dart';
 import 'package:contact_form/widgets/fields/contact_text_field.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,18 @@ class ContactField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (contactFieldData.applicationField.type) {
+      case 'radio':
+        return ContactRadioField(
+          applicationField: contactFieldData.applicationField,
+          value: contactFieldData.value,
+          onChanged: onChanged,
+        );
+      case 'select':
+        return ContactSelectField(
+          applicationField: contactFieldData.applicationField,
+          value: contactFieldData.value,
+          onChanged: onChanged,
+        );
       case 'text':
         return ContactTextField(
           applicationField: contactFieldData.applicationField,
@@ -25,12 +38,6 @@ class ContactField extends StatelessWidget {
           controller: contactFieldData.textEditingController!,
           maxLines: 8,
           minLines: 3,
-        );
-      case 'select':
-        return ContactSelectField(
-          applicationField: contactFieldData.applicationField,
-          value: contactFieldData.value,
-          onChanged: onChanged,
         );
       default:
         return Text(contactFieldData.applicationField.id);

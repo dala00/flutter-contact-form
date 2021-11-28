@@ -14,6 +14,7 @@ class ContactFieldData {
       case 'text':
       case 'textarea':
         return textEditingController?.text;
+      case 'radio':
       case 'select':
         return value;
       default:
