@@ -26,13 +26,15 @@ class _$ApplicationFieldTearOff {
       required String label,
       required String type,
       required bool isRequired,
-      required String placeholder}) {
+      required String placeholder,
+      required List<ApplicationFieldSelect> selects}) {
     return _ApplicationField(
       id: id,
       label: label,
       type: type,
       isRequired: isRequired,
       placeholder: placeholder,
+      selects: selects,
     );
   }
 
@@ -51,6 +53,8 @@ mixin _$ApplicationField {
   String get type => throw _privateConstructorUsedError;
   bool get isRequired => throw _privateConstructorUsedError;
   String get placeholder => throw _privateConstructorUsedError;
+  List<ApplicationFieldSelect> get selects =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +72,8 @@ abstract class $ApplicationFieldCopyWith<$Res> {
       String label,
       String type,
       bool isRequired,
-      String placeholder});
+      String placeholder,
+      List<ApplicationFieldSelect> selects});
 }
 
 /// @nodoc
@@ -87,6 +92,7 @@ class _$ApplicationFieldCopyWithImpl<$Res>
     Object? type = freezed,
     Object? isRequired = freezed,
     Object? placeholder = freezed,
+    Object? selects = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -109,6 +115,10 @@ class _$ApplicationFieldCopyWithImpl<$Res>
           ? _value.placeholder
           : placeholder // ignore: cast_nullable_to_non_nullable
               as String,
+      selects: selects == freezed
+          ? _value.selects
+          : selects // ignore: cast_nullable_to_non_nullable
+              as List<ApplicationFieldSelect>,
     ));
   }
 }
@@ -125,7 +135,8 @@ abstract class _$ApplicationFieldCopyWith<$Res>
       String label,
       String type,
       bool isRequired,
-      String placeholder});
+      String placeholder,
+      List<ApplicationFieldSelect> selects});
 }
 
 /// @nodoc
@@ -146,6 +157,7 @@ class __$ApplicationFieldCopyWithImpl<$Res>
     Object? type = freezed,
     Object? isRequired = freezed,
     Object? placeholder = freezed,
+    Object? selects = freezed,
   }) {
     return _then(_ApplicationField(
       id: id == freezed
@@ -168,6 +180,10 @@ class __$ApplicationFieldCopyWithImpl<$Res>
           ? _value.placeholder
           : placeholder // ignore: cast_nullable_to_non_nullable
               as String,
+      selects: selects == freezed
+          ? _value.selects
+          : selects // ignore: cast_nullable_to_non_nullable
+              as List<ApplicationFieldSelect>,
     ));
   }
 }
@@ -180,7 +196,8 @@ class _$_ApplicationField implements _ApplicationField {
       required this.label,
       required this.type,
       required this.isRequired,
-      required this.placeholder});
+      required this.placeholder,
+      required this.selects});
 
   factory _$_ApplicationField.fromJson(Map<String, dynamic> json) =>
       _$$_ApplicationFieldFromJson(json);
@@ -195,10 +212,12 @@ class _$_ApplicationField implements _ApplicationField {
   final bool isRequired;
   @override
   final String placeholder;
+  @override
+  final List<ApplicationFieldSelect> selects;
 
   @override
   String toString() {
-    return 'ApplicationField(id: $id, label: $label, type: $type, isRequired: $isRequired, placeholder: $placeholder)';
+    return 'ApplicationField(id: $id, label: $label, type: $type, isRequired: $isRequired, placeholder: $placeholder, selects: $selects)';
   }
 
   @override
@@ -212,12 +231,13 @@ class _$_ApplicationField implements _ApplicationField {
             (identical(other.isRequired, isRequired) ||
                 other.isRequired == isRequired) &&
             (identical(other.placeholder, placeholder) ||
-                other.placeholder == placeholder));
+                other.placeholder == placeholder) &&
+            const DeepCollectionEquality().equals(other.selects, selects));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, label, type, isRequired, placeholder);
+  int get hashCode => Object.hash(runtimeType, id, label, type, isRequired,
+      placeholder, const DeepCollectionEquality().hash(selects));
 
   @JsonKey(ignore: true)
   @override
@@ -236,7 +256,8 @@ abstract class _ApplicationField implements ApplicationField {
       required String label,
       required String type,
       required bool isRequired,
-      required String placeholder}) = _$_ApplicationField;
+      required String placeholder,
+      required List<ApplicationFieldSelect> selects}) = _$_ApplicationField;
 
   factory _ApplicationField.fromJson(Map<String, dynamic> json) =
       _$_ApplicationField.fromJson;
@@ -251,6 +272,8 @@ abstract class _ApplicationField implements ApplicationField {
   bool get isRequired;
   @override
   String get placeholder;
+  @override
+  List<ApplicationFieldSelect> get selects;
   @override
   @JsonKey(ignore: true)
   _$ApplicationFieldCopyWith<_ApplicationField> get copyWith =>

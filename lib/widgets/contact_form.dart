@@ -21,7 +21,7 @@ class ContactForm extends StatefulWidget {
 class _ContactFormState extends State<ContactForm> {
   List<ContactFieldData> _contactFieldDataList = [];
 
-  static const double fieldMargin = 12;
+  static const double fieldMargin = 20;
 
   @override
   void initState() {
@@ -56,6 +56,11 @@ class _ContactFormState extends State<ContactForm> {
                 margin: const EdgeInsets.only(bottom: fieldMargin),
                 child: ContactField(
                   contactFieldData: contactFieldData,
+                  onChanged: (dynamic value) {
+                    setState(() {
+                      contactFieldData.value = value;
+                    });
+                  },
                 ),
               ),
             )

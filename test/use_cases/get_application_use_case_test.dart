@@ -17,6 +17,7 @@ void main() {
         type: 'text',
         isRequired: true,
         placeholder: '',
+        selects: [],
       ),
       ApplicationField(
         id: 'b',
@@ -24,6 +25,7 @@ void main() {
         type: 'textarea',
         isRequired: true,
         placeholder: '',
+        selects: [],
       ),
     ];
     final json = {

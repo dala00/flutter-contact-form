@@ -25,9 +25,13 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Container(
-          margin: const EdgeInsets.all(20),
-          child: const ContactForm(applicationKey: 'testkey'),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              margin: const EdgeInsets.all(20),
+              child: const ContactForm(applicationKey: 'testkey'),
+            ),
+          ),
         ),
       ),
     );
