@@ -16,6 +16,7 @@ class ContactFieldData {
       case 'select':
         return value;
       case 'date':
+      case 'datetime':
         return (value as DateTime).toUtc().toIso8601String();
       case 'number':
         return num.tryParse(textEditingController!.text) ?? 0;
