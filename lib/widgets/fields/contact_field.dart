@@ -1,5 +1,6 @@
 import 'package:contact_form/models/contact_field_data.dart';
 import 'package:contact_form/widgets/fields/contact_checkbox_field.dart';
+import 'package:contact_form/widgets/fields/contact_date_field.dart';
 import 'package:contact_form/widgets/fields/contact_radio_field.dart';
 import 'package:contact_form/widgets/fields/contact_select_field.dart';
 import 'package:contact_form/widgets/fields/contact_text_field.dart';
@@ -20,6 +21,12 @@ class ContactField extends StatelessWidget {
         return ContactCheckboxField(
           applicationField: contactFieldData.applicationField,
           value: contactFieldData.value ?? [],
+          onChanged: onChanged,
+        );
+      case 'date':
+        return ContactDateField(
+          applicationField: contactFieldData.applicationField,
+          value: contactFieldData.value,
           onChanged: onChanged,
         );
       case 'number':
