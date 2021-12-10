@@ -4,6 +4,7 @@ import 'package:contact_form/widgets/fields/contact_date_field.dart';
 import 'package:contact_form/widgets/fields/contact_radio_field.dart';
 import 'package:contact_form/widgets/fields/contact_select_field.dart';
 import 'package:contact_form/widgets/fields/contact_text_field.dart';
+import 'package:contact_form/widgets/fields/contact_time_field.dart';
 import 'package:flutter/material.dart';
 
 class ContactField extends StatelessWidget {
@@ -58,6 +59,12 @@ class ContactField extends StatelessWidget {
           controller: contactFieldData.textEditingController!,
           maxLines: 8,
           minLines: 3,
+        );
+      case 'time':
+        return ContactTimeField(
+          applicationField: contactFieldData.applicationField,
+          value: contactFieldData.value,
+          onChanged: onChanged,
         );
       default:
         return Text(contactFieldData.applicationField.id);

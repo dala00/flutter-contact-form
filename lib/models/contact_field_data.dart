@@ -22,6 +22,11 @@ class ContactFieldData {
       case 'text':
       case 'textarea':
         return textEditingController!.text;
+      case 'time':
+        return {
+          'hour': (value as TimeOfDay).hour,
+          'minute': (value as TimeOfDay).minute,
+        };
       default:
         return value;
     }
