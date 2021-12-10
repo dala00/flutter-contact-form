@@ -6,12 +6,14 @@ class ContactTextField extends StatelessWidget {
     Key? key,
     required this.applicationField,
     required this.controller,
+    this.keyboardType,
     this.maxLines,
     this.minLines,
   }) : super(key: key);
 
   final ApplicationField applicationField;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
   final int? maxLines;
   final int? minLines;
 
@@ -23,6 +25,7 @@ class ContactTextField extends StatelessWidget {
         labelText: applicationField.label,
         hintText: applicationField.placeholder,
       ),
+      keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: minLines,
     );

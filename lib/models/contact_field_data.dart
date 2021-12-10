@@ -15,9 +15,11 @@ class ContactFieldData {
       case 'radio':
       case 'select':
         return value;
+      case 'number':
+        return num.tryParse(textEditingController!.text) ?? 0;
       case 'text':
       case 'textarea':
-        return textEditingController?.text;
+        return textEditingController!.text;
       default:
         return value;
     }

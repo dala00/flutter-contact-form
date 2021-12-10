@@ -22,6 +22,12 @@ class ContactField extends StatelessWidget {
           value: contactFieldData.value ?? [],
           onChanged: onChanged,
         );
+      case 'number':
+        return ContactTextField(
+          applicationField: contactFieldData.applicationField,
+          controller: contactFieldData.textEditingController!,
+          keyboardType: TextInputType.number,
+        );
       case 'radio':
         return ContactRadioField(
           applicationField: contactFieldData.applicationField,
