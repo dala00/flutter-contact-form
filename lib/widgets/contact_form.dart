@@ -19,6 +19,7 @@ class ContactForm extends StatefulWidget {
 }
 
 class _ContactFormState extends State<ContactForm> {
+  final _formKey = GlobalKey<FormState>();
   List<ContactFieldData> _contactFieldDataList = [];
 
   static const double fieldMargin = 20;
@@ -43,6 +44,10 @@ class _ContactFormState extends State<ContactForm> {
   }
 
   Future<void> _submit() async {
+    if (_formKey.currentState!.validate() != true) {
+      return;
+    }
+
     await PostContactUseCase(widget.applicationKey)
         .invoke(_contactFieldDataList);
   }
@@ -69,19 +74,22 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildFields(),
-        Container(
-          margin: const EdgeInsets.only(top: 20),
-          width: double.infinity,
-          child: ElevatedButton(
-            onPressed: _submit,
-            child: const Text('Submit'),
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildFields(),
+          Container(
+            margin: const EdgeInsets.only(top: 20),
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: _submit,
+              child: const Text('Submit'),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

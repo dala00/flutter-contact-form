@@ -28,6 +28,14 @@ class ContactTextField extends StatelessWidget {
       keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: minLines,
+      validator: applicationField.isRequired
+          ? (value) {
+              if (value == null || value.trim().isEmpty) {
+                return 'This field is required';
+              }
+              return null;
+            }
+          : null,
     );
   }
 }
