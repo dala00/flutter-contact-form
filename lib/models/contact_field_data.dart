@@ -10,6 +10,10 @@ class ContactFieldData {
   dynamic value;
 
   dynamic getValue() {
+    if (value == null) {
+      return null;
+    }
+
     switch (applicationField.type) {
       case 'checkbox':
       case 'radio':
