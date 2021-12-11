@@ -66,7 +66,6 @@ class ContactField extends StatelessWidget {
       case 'time':
         return ContactTimeField(
           applicationField: contactFieldData.applicationField,
-          value: contactFieldData.value,
           onChanged: onChanged,
         );
       default:
