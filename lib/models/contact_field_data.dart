@@ -10,10 +10,6 @@ class ContactFieldData {
   dynamic value;
 
   dynamic getValue() {
-    if (value == null) {
-      return null;
-    }
-
     switch (applicationField.type) {
       case 'checkbox':
       case 'radio':
@@ -21,13 +17,22 @@ class ContactFieldData {
         return value;
       case 'date':
       case 'datetime':
+        if (value == null) {
+          return null;
+        }
         return (value as DateTime).toUtc().toIso8601String();
       case 'number':
+        if (value == null) {
+          return null;
+        }
         return num.tryParse(textEditingController!.text) ?? 0;
       case 'text':
       case 'textarea':
         return textEditingController!.text;
       case 'time':
+        if (value == null) {
+          return null;
+        }
         return {
           'hour': (value as TimeOfDay).hour,
           'minute': (value as TimeOfDay).minute,
