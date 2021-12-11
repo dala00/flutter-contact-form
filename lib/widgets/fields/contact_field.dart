@@ -27,7 +27,6 @@ class ContactField extends StatelessWidget {
       case 'date':
         return ContactDateField(
           applicationField: contactFieldData.applicationField,
-          value: contactFieldData.value,
           onChanged: onChanged,
         );
       case 'datetime':

@@ -63,7 +63,7 @@ class ContactCheckboxField extends FormField<List<String>> {
                   ),
                 ),
                 state.hasError
-                    ? const ContactFieldError(message: 'This field is required')
+                    ? ContactFieldError(message: state.errorText!)
                     : Container(),
               ],
             );
