@@ -1,5 +1,6 @@
 import 'package:contact_form/models/application_field.dart';
 import 'package:contact_form/widgets/contact_form.dart';
+import 'package:contact_form/widgets/fields/contact_field_error.dart';
 import 'package:contact_form/widgets/fields/form_label.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class ContactSelectField extends FormField<String> {
     required void Function(String?) onChanged,
   }) : super(
           key: key,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          autovalidateMode: AutovalidateMode.disabled,
           validator: applicationField.isRequired
               ? (value) {
                   if (value == null || value.isEmpty) {
@@ -49,13 +50,7 @@ class ContactSelectField extends FormField<String> {
                   ),
                 ),
                 state.hasError
-                    ? Text(
-                        'This field is required',
-                        style: TextStyle(
-                          color: Theme.of(state.context).errorColor,
-                          fontSize: 12,
-                        ),
-                      )
+                    ? const ContactFieldError(message: 'This field is required')
                     : Container(),
               ],
             );

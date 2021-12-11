@@ -46,7 +46,6 @@ class ContactField extends StatelessWidget {
       case 'radio':
         return ContactRadioField(
           applicationField: contactFieldData.applicationField,
-          value: contactFieldData.value,
           onChanged: onChanged,
         );
       case 'select':
