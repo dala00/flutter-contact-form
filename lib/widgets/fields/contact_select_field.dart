@@ -11,12 +11,14 @@ class ContactSelectField extends FormField<String> {
   }) : super(
           key: key,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Select';
-            }
-            return null;
-          },
+          validator: applicationField.isRequired
+              ? (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Select';
+                  }
+                  return null;
+                }
+              : null,
           initialValue: '',
           onSaved: onChanged,
           builder: (FormFieldState<String> state) {
