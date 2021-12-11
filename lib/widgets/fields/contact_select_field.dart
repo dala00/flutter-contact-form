@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class ContactSelectField extends FormField<String> {
   ContactSelectField({
     Key? key,
-    required this.applicationField,
+    required ApplicationField applicationField,
     required void Function(String?) onChanged,
   }) : super(
           key: key,
@@ -56,6 +56,4 @@ class ContactSelectField extends FormField<String> {
             );
           },
         );
-
-  final ApplicationField applicationField;
 }

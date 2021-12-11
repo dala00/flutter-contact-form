@@ -22,7 +22,6 @@ class ContactField extends StatelessWidget {
       case 'checkbox':
         return ContactCheckboxField(
           applicationField: contactFieldData.applicationField,
-          value: contactFieldData.value ?? [],
           onChanged: onChanged,
         );
       case 'date':
