@@ -49,6 +49,7 @@ class ContactField extends StatelessWidget {
       case 'select':
         return ContactSelectField(
           applicationField: contactFieldData.applicationField,
+          value: contactFieldData.value,
           onChanged: onChanged,
         );
       case 'text':
