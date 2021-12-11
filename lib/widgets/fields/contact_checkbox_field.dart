@@ -16,7 +16,7 @@ class ContactCheckboxField extends FormField<List<String>> {
           validator: applicationField.isRequired
               ? (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Select';
+                    return 'This field is required';
                   }
                   return null;
                 }
