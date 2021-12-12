@@ -1,89 +1,106 @@
 import 'package:contact_form/models/application_field.dart';
 import 'package:contact_form/widgets/contact_form.dart';
+import 'package:contact_form/widgets/fields/contact_field_error.dart';
 import 'package:contact_form/widgets/fields/form_label.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ContactDateTimeField extends StatelessWidget {
-  const ContactDateTimeField({
+class ContactDateTimeField extends FormField<DateTime> {
+  ContactDateTimeField({
     Key? key,
-    required this.applicationField,
-    required this.value,
-    required this.onChanged,
-  }) : super(key: key);
+    required ApplicationField applicationField,
+    required void Function(DateTime) onChanged,
+  }) : super(
+          key: key,
+          autovalidateMode: AutovalidateMode.disabled,
+          validator: applicationField.isRequired
+              ? (value) {
+                  if (value == null) {
+                    return 'This field is required';
+                  }
+                  return null;
+                }
+              : null,
+          initialValue: null,
+          onSaved: (DateTime? value) {
+            if (value != null) {
+              onChanged(value);
+            }
+          },
+          builder: (FormFieldState<DateTime> state) {
+            final dateFormat = DateFormat.yMd();
+            final timeFormat = DateFormat.Hm();
 
-  final ApplicationField applicationField;
-  final DateTime? value;
-  final void Function(DateTime) onChanged;
+            Future<DateTime?> selectDate() async {
+              final now = DateTime.now();
+              return showDatePicker(
+                context: state.context,
+                initialDate: state.value ?? now,
+                firstDate: now,
+                lastDate: now.add(const Duration(days: 366 * 2)),
+              );
+            }
 
-  @override
-  Widget build(BuildContext context) {
-    final dateFormat = DateFormat.yMd();
-    final timeFormat = DateFormat.Hm();
+            Future<TimeOfDay?> selectTime() async {
+              return showTimePicker(
+                context: state.context,
+                initialTime: state.value == null
+                    ? TimeOfDay.now()
+                    : TimeOfDay(
+                        hour: state.value!.hour,
+                        minute: state.value!.minute,
+                      ),
+              );
+            }
 
-    Future<DateTime?> selectDate() async {
-      final now = DateTime.now();
-      return showDatePicker(
-        context: context,
-        initialDate: value ?? now,
-        firstDate: now,
-        lastDate: now.add(const Duration(days: 366 * 2)),
-      );
-    }
+            Future<void> selectDateTime() async {
+              final date = await selectDate();
+              if (date == null) {
+                return;
+              }
 
-    Future<TimeOfDay?> selectTime() async {
-      return showTimePicker(
-        context: context,
-        initialTime: value == null
-            ? TimeOfDay.now()
-            : TimeOfDay(
-                hour: value!.hour,
-                minute: value!.minute,
-              ),
-      );
-    }
+              TimeOfDay? time;
 
-    Future<void> selectDateTime() async {
-      final date = await selectDate();
-      if (date == null) {
-        return;
-      }
+              while ((time = await selectTime()) == null) {
+                final date = await selectDate();
+                if (date == null) {
+                  return;
+                }
+              }
 
-      TimeOfDay? time;
+              final dateTime = DateTime(
+                date.year,
+                date.month,
+                date.day,
+                time!.hour,
+                time.minute,
+              );
+              state.didChange(dateTime);
+              state.save();
+            }
 
-      while ((time = await selectTime()) == null) {
-        final date = await selectDate();
-        if (date == null) {
-          return;
-        }
-      }
-
-      final dateTime = DateTime(
-        date.year,
-        date.month,
-        date.day,
-        time!.hour,
-        time.minute,
-      );
-      onChanged(dateTime);
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        FormLabel(label: applicationField.label),
-        Container(
-          margin: const EdgeInsets.only(top: ContactForm.labelMargin),
-          child: TextButton(
-            onPressed: selectDateTime,
-            child: Text(
-              value == null
-                  ? 'Select date and time'
-                  : dateFormat.format(value!) + ' ' + timeFormat.format(value!),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FormLabel(label: applicationField.label),
+                Container(
+                  margin: const EdgeInsets.only(top: ContactForm.labelMargin),
+                  child: TextButton(
+                    onPressed: selectDateTime,
+                    child: Text(
+                      state.value == null
+                          ? 'Select date and time'
+                          : dateFormat.format(state.value!) +
+                              ' ' +
+                              timeFormat.format(state.value!),
+                    ),
+                  ),
+                ),
+                state.hasError
+                    ? ContactFieldError(message: state.errorText!)
+                    : Container(),
+              ],
+            );
+          },
+        );
 }
