@@ -8,9 +8,15 @@ class ContactForm extends StatefulWidget {
   const ContactForm({
     Key? key,
     required this.applicationKey,
+    this.loading,
+    this.onSubmittionStarted,
+    this.onCompleted,
   }) : super(key: key);
 
   final String applicationKey;
+  final Widget? loading;
+  final void Function()? onSubmittionStarted;
+  final void Function()? onCompleted;
 
   static const double labelMargin = 8;
 
@@ -21,6 +27,8 @@ class ContactForm extends StatefulWidget {
 class _ContactFormState extends State<ContactForm> {
   final _formKey = GlobalKey<FormState>();
   List<ContactFieldData> _contactFieldDataList = [];
+  bool _isInitialized = false;
+  bool _isSending = false;
 
   static const double fieldMargin = 20;
 
@@ -40,6 +48,7 @@ class _ContactFormState extends State<ContactForm> {
                 textEditingController: TextEditingController(),
               ))
           .toList();
+      _isInitialized = true;
     });
   }
 
@@ -48,8 +57,18 @@ class _ContactFormState extends State<ContactForm> {
       return;
     }
 
+    setState(() {
+      _isSending = true;
+    });
+    widget.onSubmittionStarted?.call();
+
     await PostContactUseCase(widget.applicationKey)
         .invoke(_contactFieldDataList);
+
+    setState(() {
+      _isSending = false;
+    });
+    widget.onCompleted?.call();
   }
 
   Widget _buildFields() {
@@ -74,6 +93,14 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_isInitialized) {
+      if (widget.loading != null) {
+        return widget.loading!;
+      }
+
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return Form(
       key: _formKey,
       child: Column(
@@ -84,7 +111,7 @@ class _ContactFormState extends State<ContactForm> {
             margin: const EdgeInsets.only(top: 20),
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: _submit,
+              onPressed: _isSending ? null : _submit,
               child: const Text('Submit'),
             ),
           ),
