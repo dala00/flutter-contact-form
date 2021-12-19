@@ -26,6 +26,7 @@ class ContactFieldData {
           return null;
         }
         return num.tryParse(textEditingController!.text) ?? 0;
+      case 'email':
       case 'text':
       case 'textarea':
         return textEditingController!.text;

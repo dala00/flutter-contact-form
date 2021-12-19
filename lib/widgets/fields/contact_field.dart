@@ -6,6 +6,7 @@ import 'package:contact_form/widgets/fields/contact_radio_field.dart';
 import 'package:contact_form/widgets/fields/contact_select_field.dart';
 import 'package:contact_form/widgets/fields/contact_text_field.dart';
 import 'package:contact_form/widgets/fields/contact_time_field.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class ContactField extends StatelessWidget {
@@ -33,6 +34,24 @@ class ContactField extends StatelessWidget {
         return ContactDateTimeField(
           applicationField: contactFieldData.applicationField,
           onChanged: onChanged,
+        );
+      case 'email':
+        return ContactTextField(
+          applicationField: contactFieldData.applicationField,
+          controller: contactFieldData.textEditingController!,
+          keyboardType: TextInputType.emailAddress,
+          validator: (String? value) {
+            if (value == null || value.isEmpty) {
+              if (contactFieldData.applicationField.isRequired) {
+                return 'This field is required';
+              }
+              return null;
+            }
+            if (!EmailValidator.validate(value)) {
+              return 'Please enter a valid email address';
+            }
+            return null;
+          },
         );
       case 'number':
         return ContactTextField(

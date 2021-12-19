@@ -9,6 +9,7 @@ class ContactTextField extends StatelessWidget {
     this.keyboardType,
     this.maxLines,
     this.minLines,
+    this.validator,
   }) : super(key: key);
 
   final ApplicationField applicationField;
@@ -16,6 +17,24 @@ class ContactTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final int? maxLines;
   final int? minLines;
+  final String? Function(String?)? validator;
+
+  String? Function(String?)? _validator() {
+    if (validator != null) {
+      return validator!;
+    }
+
+    if (!applicationField.isRequired) {
+      return null;
+    }
+
+    return (value) {
+      if (value == null || value.trim().isEmpty) {
+        return 'This field is required';
+      }
+      return null;
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +47,7 @@ class ContactTextField extends StatelessWidget {
       keyboardType: keyboardType,
       maxLines: maxLines,
       minLines: minLines,
-      validator: applicationField.isRequired
-          ? (value) {
-              if (value == null || value.trim().isEmpty) {
-                return 'This field is required';
-              }
-              return null;
-            }
-          : null,
+      validator: _validator(),
     );
   }
 }
