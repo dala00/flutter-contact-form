@@ -3,7 +3,6 @@ import 'package:contact_form/widgets/contact_form.dart';
 import 'package:contact_form/widgets/fields/contact_field_error.dart';
 import 'package:contact_form/widgets/fields/form_label.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 class ContactRadioField extends FormField<String> {
   ContactRadioField({
