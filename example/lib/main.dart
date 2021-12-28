@@ -29,7 +29,8 @@ class _MyAppState extends State<MyApp> {
           child: SingleChildScrollView(
             child: Container(
               margin: const EdgeInsets.all(20),
-              child: const ContactForm(applicationKey: 'testkey'),
+              child: const ContactForm(
+                  applicationKey: 'de51a72b-19b7-40ba-bcb4-86c6ed9453bd'),
             ),
           ),
         ),
