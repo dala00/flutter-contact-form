@@ -14,6 +14,7 @@ void main() {
       ApplicationField(
         id: 'a',
         label: 'Name',
+        localeLabels: [],
         type: 'text',
         isRequired: true,
         placeholder: '',
@@ -22,6 +23,7 @@ void main() {
       ApplicationField(
         id: 'b',
         label: 'Name2',
+        localeLabels: [],
         type: 'textarea',
         isRequired: true,
         placeholder: '',

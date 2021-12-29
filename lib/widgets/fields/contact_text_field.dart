@@ -41,7 +41,8 @@ class ContactTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
-        labelText: applicationField.label,
+        labelText: applicationField
+            .getLabel(Localizations.localeOf(context).languageCode),
         hintText: applicationField.placeholder,
       ),
       keyboardType: keyboardType,

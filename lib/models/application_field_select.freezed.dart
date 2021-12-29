@@ -22,10 +22,14 @@ ApplicationFieldSelect _$ApplicationFieldSelectFromJson(
 class _$ApplicationFieldSelectTearOff {
   const _$ApplicationFieldSelectTearOff();
 
-  _ApplicationFieldSelect call({required String id, required String name}) {
+  _ApplicationFieldSelect call(
+      {required String id,
+      required String name,
+      required List<LocaleText> localeNames}) {
     return _ApplicationFieldSelect(
       id: id,
       name: name,
+      localeNames: localeNames,
     );
   }
 
@@ -41,6 +45,7 @@ const $ApplicationFieldSelect = _$ApplicationFieldSelectTearOff();
 mixin _$ApplicationFieldSelect {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  List<LocaleText> get localeNames => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +58,7 @@ abstract class $ApplicationFieldSelectCopyWith<$Res> {
   factory $ApplicationFieldSelectCopyWith(ApplicationFieldSelect value,
           $Res Function(ApplicationFieldSelect) then) =
       _$ApplicationFieldSelectCopyWithImpl<$Res>;
-  $Res call({String id, String name});
+  $Res call({String id, String name, List<LocaleText> localeNames});
 }
 
 /// @nodoc
@@ -69,6 +74,7 @@ class _$ApplicationFieldSelectCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? localeNames = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -79,6 +85,10 @@ class _$ApplicationFieldSelectCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      localeNames: localeNames == freezed
+          ? _value.localeNames
+          : localeNames // ignore: cast_nullable_to_non_nullable
+              as List<LocaleText>,
     ));
   }
 }
@@ -90,7 +100,7 @@ abstract class _$ApplicationFieldSelectCopyWith<$Res>
           $Res Function(_ApplicationFieldSelect) then) =
       __$ApplicationFieldSelectCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name});
+  $Res call({String id, String name, List<LocaleText> localeNames});
 }
 
 /// @nodoc
@@ -108,6 +118,7 @@ class __$ApplicationFieldSelectCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? localeNames = freezed,
   }) {
     return _then(_ApplicationFieldSelect(
       id: id == freezed
@@ -118,6 +129,10 @@ class __$ApplicationFieldSelectCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      localeNames: localeNames == freezed
+          ? _value.localeNames
+          : localeNames // ignore: cast_nullable_to_non_nullable
+              as List<LocaleText>,
     ));
   }
 }
@@ -125,7 +140,8 @@ class __$ApplicationFieldSelectCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ApplicationFieldSelect implements _ApplicationFieldSelect {
-  _$_ApplicationFieldSelect({required this.id, required this.name});
+  _$_ApplicationFieldSelect(
+      {required this.id, required this.name, required this.localeNames});
 
   factory _$_ApplicationFieldSelect.fromJson(Map<String, dynamic> json) =>
       _$$_ApplicationFieldSelectFromJson(json);
@@ -134,10 +150,12 @@ class _$_ApplicationFieldSelect implements _ApplicationFieldSelect {
   final String id;
   @override
   final String name;
+  @override
+  final List<LocaleText> localeNames;
 
   @override
   String toString() {
-    return 'ApplicationFieldSelect(id: $id, name: $name)';
+    return 'ApplicationFieldSelect(id: $id, name: $name, localeNames: $localeNames)';
   }
 
   @override
@@ -146,11 +164,14 @@ class _$_ApplicationFieldSelect implements _ApplicationFieldSelect {
         (other.runtimeType == runtimeType &&
             other is _ApplicationFieldSelect &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality()
+                .equals(other.localeNames, localeNames));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, const DeepCollectionEquality().hash(localeNames));
 
   @JsonKey(ignore: true)
   @override
@@ -165,8 +186,10 @@ class _$_ApplicationFieldSelect implements _ApplicationFieldSelect {
 }
 
 abstract class _ApplicationFieldSelect implements ApplicationFieldSelect {
-  factory _ApplicationFieldSelect({required String id, required String name}) =
-      _$_ApplicationFieldSelect;
+  factory _ApplicationFieldSelect(
+      {required String id,
+      required String name,
+      required List<LocaleText> localeNames}) = _$_ApplicationFieldSelect;
 
   factory _ApplicationFieldSelect.fromJson(Map<String, dynamic> json) =
       _$_ApplicationFieldSelect.fromJson;
@@ -175,6 +198,8 @@ abstract class _ApplicationFieldSelect implements ApplicationFieldSelect {
   String get id;
   @override
   String get name;
+  @override
+  List<LocaleText> get localeNames;
   @override
   @JsonKey(ignore: true)
   _$ApplicationFieldSelectCopyWith<_ApplicationFieldSelect> get copyWith =>

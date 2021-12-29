@@ -1,5 +1,6 @@
+import 'package:contact_form_example/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:contact_form/widgets/contact_form.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,20 +22,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Container(
-              margin: const EdgeInsets.all(20),
-              child: const ContactForm(
-                  applicationKey: 'de51a72b-19b7-40ba-bcb4-86c6ed9453bd'),
-            ),
-          ),
-        ),
-      ),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('ja', ''),
+      ],
+      routes: routes,
     );
   }
 }

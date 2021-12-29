@@ -24,6 +24,7 @@ class _$ApplicationFieldTearOff {
   _ApplicationField call(
       {required String id,
       required String label,
+      required List<LocaleText> localeLabels,
       required String type,
       required bool isRequired,
       required String placeholder,
@@ -31,6 +32,7 @@ class _$ApplicationFieldTearOff {
     return _ApplicationField(
       id: id,
       label: label,
+      localeLabels: localeLabels,
       type: type,
       isRequired: isRequired,
       placeholder: placeholder,
@@ -50,6 +52,7 @@ const $ApplicationField = _$ApplicationFieldTearOff();
 mixin _$ApplicationField {
   String get id => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
+  List<LocaleText> get localeLabels => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   bool get isRequired => throw _privateConstructorUsedError;
   String get placeholder => throw _privateConstructorUsedError;
@@ -70,6 +73,7 @@ abstract class $ApplicationFieldCopyWith<$Res> {
   $Res call(
       {String id,
       String label,
+      List<LocaleText> localeLabels,
       String type,
       bool isRequired,
       String placeholder,
@@ -89,6 +93,7 @@ class _$ApplicationFieldCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? label = freezed,
+    Object? localeLabels = freezed,
     Object? type = freezed,
     Object? isRequired = freezed,
     Object? placeholder = freezed,
@@ -103,6 +108,10 @@ class _$ApplicationFieldCopyWithImpl<$Res>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
+      localeLabels: localeLabels == freezed
+          ? _value.localeLabels
+          : localeLabels // ignore: cast_nullable_to_non_nullable
+              as List<LocaleText>,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -133,6 +142,7 @@ abstract class _$ApplicationFieldCopyWith<$Res>
   $Res call(
       {String id,
       String label,
+      List<LocaleText> localeLabels,
       String type,
       bool isRequired,
       String placeholder,
@@ -154,6 +164,7 @@ class __$ApplicationFieldCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? label = freezed,
+    Object? localeLabels = freezed,
     Object? type = freezed,
     Object? isRequired = freezed,
     Object? placeholder = freezed,
@@ -168,6 +179,10 @@ class __$ApplicationFieldCopyWithImpl<$Res>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
+      localeLabels: localeLabels == freezed
+          ? _value.localeLabels
+          : localeLabels // ignore: cast_nullable_to_non_nullable
+              as List<LocaleText>,
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -190,14 +205,16 @@ class __$ApplicationFieldCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApplicationField implements _ApplicationField {
+class _$_ApplicationField extends _ApplicationField {
   _$_ApplicationField(
       {required this.id,
       required this.label,
+      required this.localeLabels,
       required this.type,
       required this.isRequired,
       required this.placeholder,
-      required this.selects});
+      required this.selects})
+      : super._();
 
   factory _$_ApplicationField.fromJson(Map<String, dynamic> json) =>
       _$$_ApplicationFieldFromJson(json);
@@ -206,6 +223,8 @@ class _$_ApplicationField implements _ApplicationField {
   final String id;
   @override
   final String label;
+  @override
+  final List<LocaleText> localeLabels;
   @override
   final String type;
   @override
@@ -217,7 +236,7 @@ class _$_ApplicationField implements _ApplicationField {
 
   @override
   String toString() {
-    return 'ApplicationField(id: $id, label: $label, type: $type, isRequired: $isRequired, placeholder: $placeholder, selects: $selects)';
+    return 'ApplicationField(id: $id, label: $label, localeLabels: $localeLabels, type: $type, isRequired: $isRequired, placeholder: $placeholder, selects: $selects)';
   }
 
   @override
@@ -227,6 +246,8 @@ class _$_ApplicationField implements _ApplicationField {
             other is _ApplicationField &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.label, label) || other.label == label) &&
+            const DeepCollectionEquality()
+                .equals(other.localeLabels, localeLabels) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.isRequired, isRequired) ||
                 other.isRequired == isRequired) &&
@@ -236,8 +257,15 @@ class _$_ApplicationField implements _ApplicationField {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, label, type, isRequired,
-      placeholder, const DeepCollectionEquality().hash(selects));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      label,
+      const DeepCollectionEquality().hash(localeLabels),
+      type,
+      isRequired,
+      placeholder,
+      const DeepCollectionEquality().hash(selects));
 
   @JsonKey(ignore: true)
   @override
@@ -250,14 +278,16 @@ class _$_ApplicationField implements _ApplicationField {
   }
 }
 
-abstract class _ApplicationField implements ApplicationField {
+abstract class _ApplicationField extends ApplicationField {
   factory _ApplicationField(
       {required String id,
       required String label,
+      required List<LocaleText> localeLabels,
       required String type,
       required bool isRequired,
       required String placeholder,
       required List<ApplicationFieldSelect> selects}) = _$_ApplicationField;
+  _ApplicationField._() : super._();
 
   factory _ApplicationField.fromJson(Map<String, dynamic> json) =
       _$_ApplicationField.fromJson;
@@ -266,6 +296,8 @@ abstract class _ApplicationField implements ApplicationField {
   String get id;
   @override
   String get label;
+  @override
+  List<LocaleText> get localeLabels;
   @override
   String get type;
   @override

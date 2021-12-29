@@ -11,6 +11,9 @@ _$_ApplicationFieldSelect _$$_ApplicationFieldSelectFromJson(
     _$_ApplicationFieldSelect(
       id: json['id'] as String,
       name: json['name'] as String,
+      localeNames: (json['localeNames'] as List<dynamic>)
+          .map((e) => LocaleText.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ApplicationFieldSelectToJson(
@@ -18,4 +21,5 @@ Map<String, dynamic> _$$_ApplicationFieldSelectToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'localeNames': instance.localeNames,
     };
