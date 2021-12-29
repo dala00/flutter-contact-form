@@ -41,7 +41,10 @@ class ContactTimeField extends FormField<TimeOfDay> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FormLabel(label: applicationField.label),
+                FormLabel(
+                    label: applicationField.getLabel(
+                  Localizations.localeOf(state.context).languageCode,
+                )),
                 Container(
                   margin: const EdgeInsets.only(top: ContactForm.labelMargin),
                   child: TextButton(

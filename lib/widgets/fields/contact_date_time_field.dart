@@ -82,7 +82,10 @@ class ContactDateTimeField extends FormField<DateTime> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FormLabel(label: applicationField.label),
+                FormLabel(
+                    label: applicationField.getLabel(
+                  Localizations.localeOf(state.context).languageCode,
+                )),
                 Container(
                   margin: const EdgeInsets.only(top: ContactForm.labelMargin),
                   child: TextButton(

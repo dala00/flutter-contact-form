@@ -23,6 +23,8 @@ class ContactCheckboxField extends FormField<List<String>> {
           initialValue: [],
           onSaved: (List<String>? value) => onChanged(value ?? []),
           builder: (FormFieldState<List<String>> state) {
+            final locale = Localizations.localeOf(state.context).languageCode;
+
             List<String> getNewValue(
                 bool? value, String applicationFieldSelectId) {
               final currentValue = state.value ?? [];
@@ -38,14 +40,15 @@ class ContactCheckboxField extends FormField<List<String>> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FormLabel(label: applicationField.label),
+                FormLabel(label: applicationField.getLabel(locale)),
                 Container(
                   margin: const EdgeInsets.only(top: ContactForm.labelMargin),
                   child: Column(
                     children: applicationField.selects
                         .map((applicationFieldSelect) => CheckboxListTile(
                               controlAffinity: ListTileControlAffinity.leading,
-                              title: Text(applicationFieldSelect.name),
+                              title:
+                                  Text(applicationFieldSelect.getName(locale)),
                               value: state.value
                                       ?.contains(applicationFieldSelect.id) ==
                                   true,

@@ -23,16 +23,19 @@ class ContactRadioField extends FormField<String> {
           initialValue: null,
           onSaved: onChanged,
           builder: (FormFieldState<String> state) {
+            final locale = Localizations.localeOf(state.context).languageCode;
+
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FormLabel(label: applicationField.label),
+                FormLabel(label: applicationField.getLabel(locale)),
                 Container(
                   margin: const EdgeInsets.only(top: ContactForm.labelMargin),
                   child: Column(
                     children: applicationField.selects
                         .map((applicationFieldSelect) => RadioListTile(
-                              title: Text(applicationFieldSelect.name),
+                              title:
+                                  Text(applicationFieldSelect.getName(locale)),
                               value: applicationFieldSelect.id,
                               groupValue: state.value,
                               dense: true,
