@@ -1,7 +1,8 @@
+import 'package:contact_form/widgets/contact_form.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ContactPage extends StatelessWidget {
+  const ContactPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +14,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Container(
             margin: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () => Navigator.of(context).pushNamed('/contact'),
-                  child: const Text('Contact'),
-                ),
-              ],
+            child: const ContactForm(
+              applicationKey: 'de51a72b-19b7-40ba-bcb4-86c6ed9453bd',
             ),
           ),
         ),

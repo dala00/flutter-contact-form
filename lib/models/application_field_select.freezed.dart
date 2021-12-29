@@ -139,9 +139,10 @@ class __$ApplicationFieldSelectCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ApplicationFieldSelect implements _ApplicationFieldSelect {
+class _$_ApplicationFieldSelect extends _ApplicationFieldSelect {
   _$_ApplicationFieldSelect(
-      {required this.id, required this.name, required this.localeNames});
+      {required this.id, required this.name, required this.localeNames})
+      : super._();
 
   factory _$_ApplicationFieldSelect.fromJson(Map<String, dynamic> json) =>
       _$$_ApplicationFieldSelectFromJson(json);
@@ -185,11 +186,12 @@ class _$_ApplicationFieldSelect implements _ApplicationFieldSelect {
   }
 }
 
-abstract class _ApplicationFieldSelect implements ApplicationFieldSelect {
+abstract class _ApplicationFieldSelect extends ApplicationFieldSelect {
   factory _ApplicationFieldSelect(
       {required String id,
       required String name,
       required List<LocaleText> localeNames}) = _$_ApplicationFieldSelect;
+  _ApplicationFieldSelect._() : super._();
 
   factory _ApplicationFieldSelect.fromJson(Map<String, dynamic> json) =
       _$_ApplicationFieldSelect.fromJson;

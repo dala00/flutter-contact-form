@@ -17,10 +17,12 @@ class ContactSelectField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = Localizations.localeOf(context).languageCode;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FormLabel(label: applicationField.label),
+        FormLabel(label: applicationField.getLabel(locale)),
         Container(
           margin: const EdgeInsets.only(top: ContactForm.labelMargin),
           child: DropdownButtonFormField<String?>(
@@ -40,7 +42,7 @@ class ContactSelectField extends StatelessWidget {
               ...applicationField.selects
                   .map((select) => DropdownMenuItem(
                         value: select.id,
-                        child: Text(select.name),
+                        child: Text(select.getName(locale)),
                       ))
                   .toList(),
             ],
