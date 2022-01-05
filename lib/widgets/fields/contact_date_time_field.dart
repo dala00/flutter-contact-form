@@ -1,3 +1,4 @@
+import 'package:contact_form/generated/l10n.dart';
 import 'package:contact_form/models/application_field.dart';
 import 'package:contact_form/widgets/contact_form.dart';
 import 'package:contact_form/widgets/fields/contact_field_error.dart';
@@ -9,6 +10,7 @@ class ContactDateTimeField extends FormField<DateTime> {
   ContactDateTimeField({
     Key? key,
     required ApplicationField applicationField,
+    required S s,
     required void Function(DateTime) onChanged,
   }) : super(
           key: key,
@@ -16,7 +18,7 @@ class ContactDateTimeField extends FormField<DateTime> {
           validator: applicationField.isRequired
               ? (value) {
                   if (value == null) {
-                    return 'This field is required';
+                    return s.fieldIsRequired;
                   }
                   return null;
                 }
@@ -92,7 +94,7 @@ class ContactDateTimeField extends FormField<DateTime> {
                     onPressed: selectDateTime,
                     child: Text(
                       state.value == null
-                          ? 'Select date and time'
+                          ? s.selectDateAndTime
                           : dateFormat.format(state.value!) +
                               ' ' +
                               timeFormat.format(state.value!),

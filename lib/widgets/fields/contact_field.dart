@@ -1,3 +1,4 @@
+import 'package:contact_form/generated/l10n.dart';
 import 'package:contact_form/models/contact_field_data.dart';
 import 'package:contact_form/widgets/fields/contact_checkbox_field.dart';
 import 'package:contact_form/widgets/fields/contact_date_field.dart';
@@ -10,11 +11,15 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class ContactField extends StatelessWidget {
-  const ContactField(
-      {Key? key, required this.contactFieldData, required this.onChanged})
-      : super(key: key);
+  const ContactField({
+    Key? key,
+    required this.contactFieldData,
+    required this.s,
+    required this.onChanged,
+  }) : super(key: key);
 
   final ContactFieldData contactFieldData;
+  final S s;
   final void Function(dynamic) onChanged;
 
   @override
@@ -23,16 +28,19 @@ class ContactField extends StatelessWidget {
       case 'checkbox':
         return ContactCheckboxField(
           applicationField: contactFieldData.applicationField,
+          s: s,
           onChanged: onChanged,
         );
       case 'date':
         return ContactDateField(
           applicationField: contactFieldData.applicationField,
+          s: s,
           onChanged: onChanged,
         );
       case 'datetime':
         return ContactDateTimeField(
           applicationField: contactFieldData.applicationField,
+          s: s,
           onChanged: onChanged,
         );
       case 'email':
@@ -40,15 +48,16 @@ class ContactField extends StatelessWidget {
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
           keyboardType: TextInputType.emailAddress,
+          s: s,
           validator: (String? value) {
             if (value == null || value.isEmpty) {
               if (contactFieldData.applicationField.isRequired) {
-                return 'This field is required';
+                return s.fieldIsRequired;
               }
               return null;
             }
             if (!EmailValidator.validate(value)) {
-              return 'Please enter a valid email address';
+              return s.enterValidEmail;
             }
             return null;
           },
@@ -58,22 +67,26 @@ class ContactField extends StatelessWidget {
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
           keyboardType: TextInputType.number,
+          s: s,
         );
       case 'radio':
         return ContactRadioField(
           applicationField: contactFieldData.applicationField,
+          s: s,
           onChanged: onChanged,
         );
       case 'select':
         return ContactSelectField(
           applicationField: contactFieldData.applicationField,
           value: contactFieldData.value,
+          s: s,
           onChanged: onChanged,
         );
       case 'text':
         return ContactTextField(
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
+          s: s,
         );
       case 'textarea':
         return ContactTextField(
@@ -81,10 +94,12 @@ class ContactField extends StatelessWidget {
           controller: contactFieldData.textEditingController!,
           maxLines: 8,
           minLines: 3,
+          s: s,
         );
       case 'time':
         return ContactTimeField(
           applicationField: contactFieldData.applicationField,
+          s: s,
           onChanged: onChanged,
         );
       default:

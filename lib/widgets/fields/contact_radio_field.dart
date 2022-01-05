@@ -1,3 +1,4 @@
+import 'package:contact_form/generated/l10n.dart';
 import 'package:contact_form/models/application_field.dart';
 import 'package:contact_form/widgets/contact_form.dart';
 import 'package:contact_form/widgets/fields/contact_field_error.dart';
@@ -8,6 +9,7 @@ class ContactRadioField extends FormField<String> {
   ContactRadioField({
     Key? key,
     required ApplicationField applicationField,
+    required S s,
     required void Function(String?) onChanged,
   }) : super(
           key: key,
@@ -15,7 +17,7 @@ class ContactRadioField extends FormField<String> {
           validator: applicationField.isRequired
               ? (value) {
                   if (value == null || value.isEmpty) {
-                    return 'This field is required';
+                    return s.fieldIsRequired;
                   }
                   return null;
                 }

@@ -1,0 +1,8 @@
+{
+	"enterValidEmail": "正しいメルアドレスを入力してください。",
+	"fieldIsRequired": "入力してください",
+	"selectDate": "日付を選択",
+	"selectDateAndTime": "日時を選択",
+	"selectTime": "時刻を選択",
+	"submit": "送信する"
+}

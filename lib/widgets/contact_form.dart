@@ -1,3 +1,4 @@
+import 'package:contact_form/generated/l10n.dart';
 import 'package:contact_form/models/contact_field_data.dart';
 import 'package:contact_form/use_cases/get_application_use_case.dart';
 import 'package:contact_form/use_cases/post_contact_use_case.dart';
@@ -29,6 +30,7 @@ class _ContactFormState extends State<ContactForm> {
   List<ContactFieldData> _contactFieldDataList = [];
   bool _isInitialized = false;
   bool _isSending = false;
+  late S _s;
 
   static const double fieldMargin = 20;
 
@@ -41,6 +43,7 @@ class _ContactFormState extends State<ContactForm> {
   Future<void> _initialize() async {
     final applicationFields =
         await GetApplicationUseCase(widget.applicationKey).invoke();
+    final s = await S.load(Localizations.localeOf(context));
     setState(() {
       _contactFieldDataList = applicationFields
           .map((applicationField) => ContactFieldData(
@@ -48,6 +51,7 @@ class _ContactFormState extends State<ContactForm> {
                 textEditingController: TextEditingController(),
               ))
           .toList();
+      _s = s;
       _isInitialized = true;
     });
   }
@@ -80,6 +84,7 @@ class _ContactFormState extends State<ContactForm> {
                 margin: const EdgeInsets.only(bottom: fieldMargin),
                 child: ContactField(
                   contactFieldData: contactFieldData,
+                  s: _s,
                   onChanged: (dynamic value) {
                     setState(() {
                       contactFieldData.value = value;
@@ -112,7 +117,7 @@ class _ContactFormState extends State<ContactForm> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: _isSending ? null : _submit,
-              child: const Text('Submit'),
+              child: Text(_s.submit),
             ),
           ),
         ],
