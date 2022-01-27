@@ -15,7 +15,7 @@ class ContactPage extends StatelessWidget {
           child: Container(
             margin: const EdgeInsets.all(20),
             child: const ContactForm(
-              applicationKey: 'de51a72b-19b7-40ba-bcb4-86c6ed9453bd',
+              applicationKey: '4eb55f3a-98bd-4c3a-b7da-27f5e6b1ac9b',
             ),
           ),
         ),

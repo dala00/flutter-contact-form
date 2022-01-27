@@ -16,7 +16,7 @@ class PostContactUseCase extends BaseUseCase {
   ) async {
     final packageInfo = await PackageInfo.fromPlatform();
     final contactRequestData = ContactRequestData(
-      platform: Platform.isIOS ? 'ios' : 'android',
+      platform: Platform.isIOS ? 'IOS' : 'ANDROID',
       version: packageInfo.version,
       buildNumber: packageInfo.buildNumber,
       fields: contactFieldDataList
