@@ -25,25 +25,25 @@ class ContactField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (contactFieldData.applicationField.type) {
-      case 'checkbox':
+      case 'CHECKBOX':
         return ContactCheckboxField(
           applicationField: contactFieldData.applicationField,
           s: s,
           onChanged: onChanged,
         );
-      case 'date':
+      case 'DATE':
         return ContactDateField(
           applicationField: contactFieldData.applicationField,
           s: s,
           onChanged: onChanged,
         );
-      case 'datetime':
+      case 'DATETIME':
         return ContactDateTimeField(
           applicationField: contactFieldData.applicationField,
           s: s,
           onChanged: onChanged,
         );
-      case 'email':
+      case 'EMAIL':
         return ContactTextField(
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
@@ -62,33 +62,33 @@ class ContactField extends StatelessWidget {
             return null;
           },
         );
-      case 'number':
+      case 'NUMBER':
         return ContactTextField(
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
           keyboardType: TextInputType.number,
           s: s,
         );
-      case 'radio':
+      case 'RADIO':
         return ContactRadioField(
           applicationField: contactFieldData.applicationField,
           s: s,
           onChanged: onChanged,
         );
-      case 'select':
+      case 'SELECT':
         return ContactSelectField(
           applicationField: contactFieldData.applicationField,
           value: contactFieldData.value,
           s: s,
           onChanged: onChanged,
         );
-      case 'text':
+      case 'TEXT':
         return ContactTextField(
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
           s: s,
         );
-      case 'textarea':
+      case 'TEXTAREA':
         return ContactTextField(
           applicationField: contactFieldData.applicationField,
           controller: contactFieldData.textEditingController!,
@@ -96,7 +96,7 @@ class ContactField extends StatelessWidget {
           minLines: 3,
           s: s,
         );
-      case 'time':
+      case 'TIME':
         return ContactTimeField(
           applicationField: contactFieldData.applicationField,
           s: s,

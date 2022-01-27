@@ -11,26 +11,26 @@ class ContactFieldData {
 
   dynamic getValue() {
     switch (applicationField.type) {
-      case 'checkbox':
-      case 'radio':
-      case 'select':
+      case 'CHECKBOX':
+      case 'RADIO':
+      case 'SELECT':
         return value;
-      case 'date':
-      case 'datetime':
+      case 'DATE':
+      case 'DATETIME':
         if (value == null) {
           return null;
         }
         return (value as DateTime).toUtc().toIso8601String();
-      case 'number':
+      case 'NUMBER':
         if (value == null) {
           return null;
         }
         return num.tryParse(textEditingController!.text) ?? 0;
-      case 'email':
-      case 'text':
-      case 'textarea':
+      case 'EMAIL':
+      case 'TEXT':
+      case 'TEXTAREA':
         return textEditingController!.text;
-      case 'time':
+      case 'TIME':
         if (value == null) {
           return null;
         }
