@@ -45,7 +45,7 @@ void main() {
           id: 'a',
           label: 'aaaa',
           localeLabels: [],
-          type: 'text',
+          type: 'TEXT',
           isRequired: true,
           placeholder: '',
           selects: [],
@@ -57,7 +57,7 @@ void main() {
           id: 'b',
           label: 'bbbb',
           localeLabels: [],
-          type: 'textarea',
+          type: 'TEXTAREA',
           isRequired: true,
           placeholder: '',
           selects: [],
@@ -66,7 +66,7 @@ void main() {
       ),
     ];
     final contact = ContactRequestData(
-      platform: 'android',
+      platform: 'ANDROID',
       version: packageInfo['version'],
       buildNumber: packageInfo['buildNumber'],
       fields: [
