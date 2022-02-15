@@ -25,11 +25,13 @@ class _$ContactRequestDataTearOff {
       {required String platform,
       required String version,
       required String buildNumber,
+      required String locale,
       required List<ContactFieldRequestData> fields}) {
     return _ContactRequestData(
       platform: platform,
       version: version,
       buildNumber: buildNumber,
+      locale: locale,
       fields: fields,
     );
   }
@@ -47,6 +49,7 @@ mixin _$ContactRequestData {
   String get platform => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   String get buildNumber => throw _privateConstructorUsedError;
+  String get locale => throw _privateConstructorUsedError;
   List<ContactFieldRequestData> get fields =>
       throw _privateConstructorUsedError;
 
@@ -65,6 +68,7 @@ abstract class $ContactRequestDataCopyWith<$Res> {
       {String platform,
       String version,
       String buildNumber,
+      String locale,
       List<ContactFieldRequestData> fields});
 }
 
@@ -82,6 +86,7 @@ class _$ContactRequestDataCopyWithImpl<$Res>
     Object? platform = freezed,
     Object? version = freezed,
     Object? buildNumber = freezed,
+    Object? locale = freezed,
     Object? fields = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,6 +101,10 @@ class _$ContactRequestDataCopyWithImpl<$Res>
       buildNumber: buildNumber == freezed
           ? _value.buildNumber
           : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      locale: locale == freezed
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
               as String,
       fields: fields == freezed
           ? _value.fields
@@ -116,6 +125,7 @@ abstract class _$ContactRequestDataCopyWith<$Res>
       {String platform,
       String version,
       String buildNumber,
+      String locale,
       List<ContactFieldRequestData> fields});
 }
 
@@ -135,6 +145,7 @@ class __$ContactRequestDataCopyWithImpl<$Res>
     Object? platform = freezed,
     Object? version = freezed,
     Object? buildNumber = freezed,
+    Object? locale = freezed,
     Object? fields = freezed,
   }) {
     return _then(_ContactRequestData(
@@ -149,6 +160,10 @@ class __$ContactRequestDataCopyWithImpl<$Res>
       buildNumber: buildNumber == freezed
           ? _value.buildNumber
           : buildNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      locale: locale == freezed
+          ? _value.locale
+          : locale // ignore: cast_nullable_to_non_nullable
               as String,
       fields: fields == freezed
           ? _value.fields
@@ -165,6 +180,7 @@ class _$_ContactRequestData implements _ContactRequestData {
       {required this.platform,
       required this.version,
       required this.buildNumber,
+      required this.locale,
       required this.fields});
 
   factory _$_ContactRequestData.fromJson(Map<String, dynamic> json) =>
@@ -177,11 +193,13 @@ class _$_ContactRequestData implements _ContactRequestData {
   @override
   final String buildNumber;
   @override
+  final String locale;
+  @override
   final List<ContactFieldRequestData> fields;
 
   @override
   String toString() {
-    return 'ContactRequestData(platform: $platform, version: $version, buildNumber: $buildNumber, fields: $fields)';
+    return 'ContactRequestData(platform: $platform, version: $version, buildNumber: $buildNumber, locale: $locale, fields: $fields)';
   }
 
   @override
@@ -194,12 +212,13 @@ class _$_ContactRequestData implements _ContactRequestData {
             (identical(other.version, version) || other.version == version) &&
             (identical(other.buildNumber, buildNumber) ||
                 other.buildNumber == buildNumber) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
             const DeepCollectionEquality().equals(other.fields, fields));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, platform, version, buildNumber,
-      const DeepCollectionEquality().hash(fields));
+      locale, const DeepCollectionEquality().hash(fields));
 
   @JsonKey(ignore: true)
   @override
@@ -217,6 +236,7 @@ abstract class _ContactRequestData implements ContactRequestData {
       {required String platform,
       required String version,
       required String buildNumber,
+      required String locale,
       required List<ContactFieldRequestData> fields}) = _$_ContactRequestData;
 
   factory _ContactRequestData.fromJson(Map<String, dynamic> json) =
@@ -228,6 +248,8 @@ abstract class _ContactRequestData implements ContactRequestData {
   String get version;
   @override
   String get buildNumber;
+  @override
+  String get locale;
   @override
   List<ContactFieldRequestData> get fields;
   @override

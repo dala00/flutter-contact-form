@@ -11,14 +11,16 @@ class PostContactUseCase extends BaseUseCase {
   PostContactUseCase(String applicationKey, {HttpClient? client})
       : super(applicationKey, client: client);
 
-  Future<bool> invoke(
-    List<ContactFieldData> contactFieldDataList,
-  ) async {
+  Future<bool> invoke({
+    required List<ContactFieldData> contactFieldDataList,
+    required String locale,
+  }) async {
     final packageInfo = await PackageInfo.fromPlatform();
     final contactRequestData = ContactRequestData(
       platform: Platform.isIOS ? 'IOS' : 'ANDROID',
       version: packageInfo.version,
       buildNumber: packageInfo.buildNumber,
+      locale: locale,
       fields: contactFieldDataList
           .map((contactFieldData) => ContactFieldRequestData(
                 applicationFieldId: contactFieldData.applicationField.id,

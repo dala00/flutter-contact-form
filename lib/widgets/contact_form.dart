@@ -66,8 +66,10 @@ class _ContactFormState extends State<ContactForm> {
     });
     widget.onSubmittionStarted?.call();
 
-    await PostContactUseCase(widget.applicationKey)
-        .invoke(_contactFieldDataList);
+    await PostContactUseCase(widget.applicationKey).invoke(
+      contactFieldDataList: _contactFieldDataList,
+      locale: Localizations.localeOf(context).languageCode,
+    );
 
     setState(() {
       _isSending = false;

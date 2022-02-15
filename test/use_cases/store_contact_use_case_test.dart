@@ -69,6 +69,7 @@ void main() {
       platform: 'ANDROID',
       version: packageInfo['version'],
       buildNumber: packageInfo['buildNumber'],
+      locale: 'en',
       fields: [
         ContactFieldRequestData(
           applicationFieldId: contactFields[0].applicationField.id,
@@ -86,7 +87,10 @@ void main() {
         .thenAnswer((_) async => ({'result': true}));
 
     final useCase = PostContactUseCase('', client: client);
-    final result = await useCase.invoke(contactFields);
+    final result = await useCase.invoke(
+      contactFieldDataList: contactFields,
+      locale: 'en',
+    );
 
     expect(result, true);
   });
