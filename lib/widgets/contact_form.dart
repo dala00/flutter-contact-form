@@ -30,7 +30,7 @@ class _ContactFormState extends State<ContactForm> {
   List<ContactFieldData> _contactFieldDataList = [];
   bool _isInitialized = false;
   bool _isSending = false;
-  late S _s;
+  late final S _s;
 
   static const double fieldMargin = 20;
 
@@ -51,7 +51,11 @@ class _ContactFormState extends State<ContactForm> {
                 textEditingController: TextEditingController(),
               ))
           .toList();
-      _s = s;
+      if (S.maybeOf(context) == null) {
+        _s = s;
+      } else {
+        _s = S.of(context);
+      }
       _isInitialized = true;
     });
   }
