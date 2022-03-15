@@ -8,6 +8,7 @@ environment:
   flutter: ">=1.20.0"
 
 dependencies:
+  crypto: ^3.0.1
   email_validator: ^2.0.1
   flutter:
     sdk: flutter
