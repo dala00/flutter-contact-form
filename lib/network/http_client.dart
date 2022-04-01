@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class HttpClient {
   HttpClient({
     required this.applicationKey,
-    this.baseUrl = 'http://192.168.11.12:3000/api/app',
+    this.baseUrl = 'https://contact-nite.com/api/app',
   });
 
   final String baseUrl;
