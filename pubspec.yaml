@@ -1,7 +1,7 @@
 name: contact_form
 description: Client of contact management system
 version: 1.0.0
-homepage: https://contact-nite.com
+homepage: https://github.com/dala00/flutter-contact-form
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
