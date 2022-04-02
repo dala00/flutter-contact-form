@@ -45,5 +45,9 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
       (super.noSuchMethod(Invocation.method(#createHeaders, []),
           returnValue: <String, String>{}) as Map<String, String>);
   @override
+  String createToken() =>
+      (super.noSuchMethod(Invocation.method(#createToken, []), returnValue: '')
+          as String);
+  @override
   String toString() => super.toString();
 }
