@@ -11,4 +11,12 @@ dependencies:
 
 ## Getting Started
 
+Show contact form.
+
+```dart
+child: const ContactForm(
+  applicationKey: 'your application form key',
+),
+```
+
 For more information, see the document at [contact-nite.com](https://contact-nite.com/documentation)
