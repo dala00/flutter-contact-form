@@ -1,6 +1,6 @@
-import 'package:contact_form/models/application_field.dart';
-import 'package:contact_form/network/http_client.dart';
-import 'package:contact_form/use_cases/base_use_case.dart';
+import '../models/application_field.dart';
+import '../network/http_client.dart';
+import 'base_use_case.dart';
 
 class GetApplicationUseCase extends BaseUseCase {
   GetApplicationUseCase(String applicationKey, {HttpClient? client})

@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:contact_form/models/contact_field_data.dart';
-import 'package:contact_form/models/contact_field_request_data.dart';
-import 'package:contact_form/models/contact_request_data.dart';
-import 'package:contact_form/network/http_client.dart';
-import 'package:contact_form/use_cases/base_use_case.dart';
 import 'package:package_info/package_info.dart';
+
+import '../models/contact_field_data.dart';
+import '../models/contact_field_request_data.dart';
+import '../models/contact_request_data.dart';
+import '../network/http_client.dart';
+import 'base_use_case.dart';
 
 class PostContactUseCase extends BaseUseCase {
   PostContactUseCase(String applicationKey, {HttpClient? client})

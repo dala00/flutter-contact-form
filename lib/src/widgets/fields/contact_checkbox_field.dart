@@ -1,9 +1,10 @@
-import 'package:contact_form/generated/l10n.dart';
-import 'package:contact_form/models/application_field.dart';
-import 'package:contact_form/widgets/contact_form.dart';
-import 'package:contact_form/widgets/fields/contact_field_error.dart';
-import 'package:contact_form/widgets/fields/form_label.dart';
 import 'package:flutter/material.dart';
+
+import '../../generated/l10n.dart';
+import '../../models/application_field.dart';
+import '../contact_form.dart';
+import 'contact_field_error.dart';
+import 'form_label.dart';
 
 class ContactCheckboxField extends FormField<List<String>> {
   ContactCheckboxField({

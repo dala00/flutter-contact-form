@@ -1,4 +1,4 @@
-import 'package:contact_form/generated/l10n.dart';
+import 'package:contact_form/contact_form.dart';
 import 'package:contact_form_example/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

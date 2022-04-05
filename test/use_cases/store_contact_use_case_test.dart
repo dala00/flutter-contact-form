@@ -1,14 +1,15 @@
-import 'package:contact_form/models/application_field.dart';
-import 'package:contact_form/models/contact_field_data.dart';
-import 'package:contact_form/models/contact_field_request_data.dart';
-import 'package:contact_form/models/contact_request_data.dart';
-import 'package:contact_form/network/http_client.dart';
-import 'package:contact_form/use_cases/post_contact_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
+import '../../lib/src/models/application_field.dart';
+import '../../lib/src/models/contact_field_data.dart';
+import '../../lib/src/models/contact_field_request_data.dart';
+import '../../lib/src/models/contact_request_data.dart';
+import '../../lib/src/network/http_client.dart';
+import '../../lib/src/use_cases/post_contact_use_case.dart';
 
 import 'store_contact_use_case_test.mocks.dart';
 

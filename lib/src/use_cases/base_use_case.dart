@@ -1,4 +1,4 @@
-import 'package:contact_form/network/http_client.dart';
+import '../network/http_client.dart';
 
 abstract class BaseUseCase {
   BaseUseCase(String applicationKey, {HttpClient? client})

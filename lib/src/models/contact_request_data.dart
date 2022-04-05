@@ -1,5 +1,6 @@
-import 'package:contact_form/models/contact_field_request_data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'contact_field_request_data.dart';
 
 part 'contact_request_data.freezed.dart';
 part 'contact_request_data.g.dart';

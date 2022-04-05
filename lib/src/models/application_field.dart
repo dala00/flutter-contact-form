@@ -1,6 +1,7 @@
-import 'package:contact_form/models/application_field_select.dart';
-import 'package:contact_form/models/locale_text.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'application_field_select.dart';
+import 'locale_text.dart';
 
 part 'application_field.freezed.dart';
 part 'application_field.g.dart';

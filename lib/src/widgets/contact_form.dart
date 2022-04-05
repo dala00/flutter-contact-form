@@ -1,9 +1,10 @@
-import 'package:contact_form/generated/l10n.dart';
-import 'package:contact_form/models/contact_field_data.dart';
-import 'package:contact_form/use_cases/get_application_use_case.dart';
-import 'package:contact_form/use_cases/post_contact_use_case.dart';
-import 'package:contact_form/widgets/fields/contact_field.dart';
 import 'package:flutter/material.dart';
+
+import '../generated/l10n.dart';
+import '../models/contact_field_data.dart';
+import '../use_cases/get_application_use_case.dart';
+import '../use_cases/post_contact_use_case.dart';
+import 'fields/contact_field.dart';
 
 class ContactForm extends StatefulWidget {
   const ContactForm({

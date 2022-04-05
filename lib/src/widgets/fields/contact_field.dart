@@ -1,14 +1,15 @@
-import 'package:contact_form/generated/l10n.dart';
-import 'package:contact_form/models/contact_field_data.dart';
-import 'package:contact_form/widgets/fields/contact_checkbox_field.dart';
-import 'package:contact_form/widgets/fields/contact_date_field.dart';
-import 'package:contact_form/widgets/fields/contact_date_time_field.dart';
-import 'package:contact_form/widgets/fields/contact_radio_field.dart';
-import 'package:contact_form/widgets/fields/contact_select_field.dart';
-import 'package:contact_form/widgets/fields/contact_text_field.dart';
-import 'package:contact_form/widgets/fields/contact_time_field.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
+import '../../generated/l10n.dart';
+import '../../models/contact_field_data.dart';
+import 'contact_checkbox_field.dart';
+import 'contact_date_field.dart';
+import 'contact_date_time_field.dart';
+import 'contact_radio_field.dart';
+import 'contact_select_field.dart';
+import 'contact_text_field.dart';
+import 'contact_time_field.dart';
 
 class ContactField extends StatelessWidget {
   const ContactField({

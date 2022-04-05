@@ -1,5 +1,6 @@
-import 'package:contact_form/models/application_field.dart';
 import 'package:flutter/material.dart';
+
+import 'application_field.dart';
 
 class ContactFieldData {
   ContactFieldData(

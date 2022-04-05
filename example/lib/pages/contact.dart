@@ -1,4 +1,4 @@
-import 'package:contact_form/widgets/contact_form.dart';
+import 'package:contact_form/contact_form.dart';
 import 'package:flutter/material.dart';
 
 class ContactPage extends StatelessWidget {

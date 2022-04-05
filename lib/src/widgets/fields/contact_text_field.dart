@@ -1,6 +1,7 @@
-import 'package:contact_form/generated/l10n.dart';
-import 'package:contact_form/models/application_field.dart';
 import 'package:flutter/material.dart';
+
+import '../../generated/l10n.dart';
+import '../../models/application_field.dart';
 
 class ContactTextField extends StatelessWidget {
   const ContactTextField({

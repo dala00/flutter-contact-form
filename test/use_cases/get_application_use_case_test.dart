@@ -1,9 +1,10 @@
-import 'package:contact_form/models/application_field.dart';
-import 'package:contact_form/network/http_client.dart';
-import 'package:contact_form/use_cases/get_application_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
+import '../../lib/src/models/application_field.dart';
+import '../../lib/src/network/http_client.dart';
+import '../../lib/src/use_cases/get_application_use_case.dart';
 
 import 'get_application_use_case_test.mocks.dart';
 

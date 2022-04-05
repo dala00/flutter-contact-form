@@ -1,16 +1,18 @@
-import 'package:contact_form/generated/l10n.dart';
-import 'package:contact_form/models/application_field.dart';
-import 'package:contact_form/widgets/contact_form.dart';
-import 'package:contact_form/widgets/fields/contact_field_error.dart';
-import 'package:contact_form/widgets/fields/form_label.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class ContactTimeField extends FormField<TimeOfDay> {
-  ContactTimeField({
+import '../../generated/l10n.dart';
+import '../../models/application_field.dart';
+import '../contact_form.dart';
+import 'contact_field_error.dart';
+import 'form_label.dart';
+
+class ContactDateField extends FormField<DateTime> {
+  ContactDateField({
     Key? key,
     required ApplicationField applicationField,
     required S s,
-    required void Function(TimeOfDay) onChanged,
+    required void Function(DateTime) onChanged,
   }) : super(
           key: key,
           autovalidateMode: AutovalidateMode.disabled,
@@ -23,16 +25,21 @@ class ContactTimeField extends FormField<TimeOfDay> {
                 }
               : null,
           initialValue: null,
-          onSaved: (TimeOfDay? value) {
+          onSaved: (DateTime? value) {
             if (value != null) {
               onChanged(value);
             }
           },
-          builder: (FormFieldState<TimeOfDay> state) {
-            Future<void> selectTime() async {
-              final picked = await showTimePicker(
+          builder: (FormFieldState<DateTime> state) {
+            final format = DateFormat.yMd();
+
+            Future<void> selectDate() async {
+              final now = DateTime.now();
+              final picked = await showDatePicker(
                 context: state.context,
-                initialTime: state.value ?? TimeOfDay.now(),
+                initialDate: state.value ?? now,
+                firstDate: now,
+                lastDate: now.add(const Duration(days: 366 * 2)),
               );
               if (picked != null) {
                 state.didChange(picked);
@@ -50,10 +57,10 @@ class ContactTimeField extends FormField<TimeOfDay> {
                 Container(
                   margin: const EdgeInsets.only(top: ContactForm.labelMargin),
                   child: TextButton(
-                    onPressed: selectTime,
+                    onPressed: selectDate,
                     child: Text(state.value == null
-                        ? s.selectTime
-                        : state.value!.format(state.context)),
+                        ? s.selectDate
+                        : format.format(state.value!)),
                   ),
                 ),
                 state.hasError
