@@ -34,6 +34,6 @@ class PostContactUseCase extends BaseUseCase {
       'contacts/store-contact',
       {'contact': contactRequestData.toJson()},
     );
-    return data['result'] == true;
+    return data?['result'] == true;
   }
 }

@@ -13,12 +13,16 @@ class ContactForm extends StatefulWidget {
     this.loading,
     this.onSubmittionStarted,
     this.onCompleted,
+    this.onInitializationError,
+    this.onSubmittionError,
   }) : super(key: key);
 
   final String applicationKey;
   final Widget? loading;
   final void Function()? onSubmittionStarted;
   final void Function()? onCompleted;
+  final void Function()? onInitializationError;
+  final void Function()? onSubmittionError;
 
   static const double labelMargin = 8;
 
@@ -44,6 +48,12 @@ class _ContactFormState extends State<ContactForm> {
   Future<void> _initialize() async {
     final applicationFields =
         await GetApplicationUseCase(widget.applicationKey).invoke();
+
+    if (applicationFields == null) {
+      widget.onInitializationError?.call();
+      return;
+    }
+
     final s = await S.load(Localizations.localeOf(context));
     setState(() {
       _contactFieldDataList = applicationFields
@@ -71,7 +81,7 @@ class _ContactFormState extends State<ContactForm> {
     });
     widget.onSubmittionStarted?.call();
 
-    await PostContactUseCase(widget.applicationKey).invoke(
+    final result = await PostContactUseCase(widget.applicationKey).invoke(
       contactFieldDataList: _contactFieldDataList,
       locale: Localizations.localeOf(context).languageCode,
     );
@@ -79,6 +89,10 @@ class _ContactFormState extends State<ContactForm> {
     setState(() {
       _isSending = false;
     });
+
+    if (!result) {
+      widget.onSubmittionError?.call();
+    }
     widget.onCompleted?.call();
   }
 

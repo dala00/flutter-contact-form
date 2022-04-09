@@ -1,6 +1,6 @@
 name: contact_form
 description: Client of contact management system
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/dala00/flutter-contact-form
 
 environment:

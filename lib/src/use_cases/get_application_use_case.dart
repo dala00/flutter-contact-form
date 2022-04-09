@@ -6,8 +6,13 @@ class GetApplicationUseCase extends BaseUseCase {
   GetApplicationUseCase(String applicationKey, {HttpClient? client})
       : super(applicationKey, client: client);
 
-  Future<List<ApplicationField>> invoke() async {
+  Future<List<ApplicationField>?> invoke() async {
     final data = await client.get('applications');
+
+    if (data == null) {
+      return null;
+    }
+
     return (data['applicationFields'] as List<dynamic>)
         .cast<Map<String, dynamic>>()
         .map((json) => ApplicationField.fromJson(json))

@@ -24,7 +24,7 @@ For more information, see the document at [contact-nite.com](https://contact-nit
 ## Configuration
 
 ```dart
-child: const ContactForm(
+child: ContactForm(
   applicationKey: 'your application form key',
   loading: const CircularProgressIndicator(),
   onSubmittionStarted: () {
@@ -32,6 +32,13 @@ child: const ContactForm(
   },
   onCompleted: () {
     // Called when posting contact data is completed.
-  }
+  },
+  onInitializationError: () {
+    // Called when initialization error occured.
+    // (For example wrong key specified)
+  },
+  onSubmittionError: () {
+    // Called when contact submittion error occured.
+  },
 ),
 ```
