@@ -20,3 +20,18 @@ child: const ContactForm(
 ```
 
 For more information, see the document at [contact-nite.com](https://contact-nite.com/documentation)
+
+## Configuration
+
+```dart
+child: const ContactForm(
+  applicationKey: 'your application form key',
+  loading: const CircularProgressIndicator(),
+  onSubmittionStarted: () {
+    // Called when submit button is touched.
+  },
+  onCompleted: () {
+    // Called when posting contact data is completed.
+  }
+),
+```
