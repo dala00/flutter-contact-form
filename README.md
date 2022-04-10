@@ -42,3 +42,7 @@ child: ContactForm(
   },
 ),
 ```
+
+### How to change design?
+
+Customize your app's theme. If you need more options, create issue.
