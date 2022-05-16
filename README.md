@@ -6,7 +6,7 @@ contact_form is a client for the [Contact Nite](https://contact-nite.com) contac
 
 ```yaml
 dependencies:
-  flutter_contact: ^1.0.0
+  flutter_contact: ^1.0.3
 ```
 
 ## Getting Started
@@ -41,6 +41,19 @@ child: ContactForm(
     // Called when contact submittion error occured.
   },
 ),
+```
+
+### Localization
+
+```dart
+    return MaterialApp(
+      localizationsDelegates: const [
+        L10n.delegate, // Your application's first
+        S.delegate, // contact_form's second
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
 ```
 
 ### How to change design?
