@@ -15,6 +15,7 @@ class PostContactUseCase extends BaseUseCase {
   Future<bool> invoke({
     required List<ContactFieldData> contactFieldDataList,
     required String locale,
+    String? metadata,
   }) async {
     final packageInfo = await PackageInfo.fromPlatform();
     final contactRequestData = ContactRequestData(
@@ -22,6 +23,7 @@ class PostContactUseCase extends BaseUseCase {
       version: packageInfo.version,
       buildNumber: packageInfo.buildNumber,
       locale: locale,
+      metadata: metadata,
       fields: contactFieldDataList
           .map((contactFieldData) => ContactFieldRequestData(
                 applicationFieldId: contactFieldData.applicationField.id,

@@ -12,6 +12,7 @@ class ContactRequestData with _$ContactRequestData {
     required String version,
     required String buildNumber,
     required String locale,
+    required String? metadata,
     required List<ContactFieldRequestData> fields,
   }) = _ContactRequestData;
 

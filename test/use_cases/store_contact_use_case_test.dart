@@ -71,6 +71,7 @@ void main() {
       version: packageInfo['version'],
       buildNumber: packageInfo['buildNumber'],
       locale: 'en',
+      metadata: '{"key":"value"}',
       fields: [
         ContactFieldRequestData(
           applicationFieldId: contactFields[0].applicationField.id,
@@ -91,6 +92,7 @@ void main() {
     final result = await useCase.invoke(
       contactFieldDataList: contactFields,
       locale: 'en',
+      metadata: '{"key":"value"}',
     );
 
     expect(result, true);

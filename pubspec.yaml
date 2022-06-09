@@ -1,6 +1,6 @@
 name: contact_form
 description: Client of contact management system. Providing contact form widget. The widget can be customized and interlocked by the management service.
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/dala00/flutter-contact-form
 
 environment:

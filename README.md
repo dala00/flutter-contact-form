@@ -6,7 +6,7 @@ contact_form is a client for the [Contact Nite](https://contact-nite.com) contac
 
 ```yaml
 dependencies:
-  flutter_contact: ^1.0.3
+  flutter_contact: ^1.0.4
 ```
 
 ## Getting Started
@@ -27,6 +27,11 @@ For more information, see the document at [contact-nite.com](https://contact-nit
 child: ContactForm(
   applicationKey: 'your application form key',
   loading: const CircularProgressIndicator(),
+  metadata: {
+    'Add': 'metadata',
+    'as': 'you like',
+    'max': '65,535byte',
+  },
   onSubmittionStarted: () {
     // Called when submit button is touched.
   },

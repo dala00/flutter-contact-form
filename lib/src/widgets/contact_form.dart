@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../generated/l10n.dart';
@@ -11,6 +13,7 @@ class ContactForm extends StatefulWidget {
     Key? key,
     required this.applicationKey,
     this.loading,
+    this.metadata,
     this.onSubmittionStarted,
     this.onCompleted,
     this.onInitializationError,
@@ -19,6 +22,7 @@ class ContactForm extends StatefulWidget {
 
   final String applicationKey;
   final Widget? loading;
+  final Map<String, dynamic>? metadata;
   final void Function()? onSubmittionStarted;
   final void Function()? onCompleted;
   final void Function()? onInitializationError;
@@ -71,6 +75,15 @@ class _ContactFormState extends State<ContactForm> {
     });
   }
 
+  String? _convertMetadata() {
+    if (widget.metadata == null) {
+      return null;
+    }
+
+    return json.encode(widget.metadata,
+        toEncodable: (data) => 'Failed to encode');
+  }
+
   Future<void> _submit() async {
     if (_formKey.currentState!.validate() != true) {
       return;
@@ -84,6 +97,7 @@ class _ContactFormState extends State<ContactForm> {
     final result = await PostContactUseCase(widget.applicationKey).invoke(
       contactFieldDataList: _contactFieldDataList,
       locale: Localizations.localeOf(context).languageCode,
+      metadata: _convertMetadata(),
     );
 
     setState(() {

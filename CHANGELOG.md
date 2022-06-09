@@ -1,3 +1,7 @@
+## 1.0.4
+
+Add sending metadata
+
 ## 1.0.3
 
 Update readme

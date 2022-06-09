@@ -13,6 +13,7 @@ _$_ContactRequestData _$$_ContactRequestDataFromJson(
       version: json['version'] as String,
       buildNumber: json['buildNumber'] as String,
       locale: json['locale'] as String,
+      metadata: json['metadata'] as String?,
       fields: (json['fields'] as List<dynamic>)
           .map((e) =>
               ContactFieldRequestData.fromJson(e as Map<String, dynamic>))
@@ -26,5 +27,6 @@ Map<String, dynamic> _$$_ContactRequestDataToJson(
       'version': instance.version,
       'buildNumber': instance.buildNumber,
       'locale': instance.locale,
+      'metadata': instance.metadata,
       'fields': instance.fields,
     };
