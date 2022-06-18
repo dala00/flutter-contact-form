@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:package_info/package_info.dart';
 
 import '../models/contact_field_data.dart';
@@ -20,6 +21,7 @@ class PostContactUseCase extends BaseUseCase {
     final packageInfo = await PackageInfo.fromPlatform();
     final contactRequestData = ContactRequestData(
       platform: Platform.isIOS ? 'IOS' : 'ANDROID',
+      osVersion: await _getOSVersion(),
       version: packageInfo.version,
       buildNumber: packageInfo.buildNumber,
       locale: locale,
@@ -37,5 +39,19 @@ class PostContactUseCase extends BaseUseCase {
       {'contact': contactRequestData.toJson()},
     );
     return data?['result'] == true;
+  }
+
+  Future<String> _getOSVersion() async {
+    final deviceInfoPlugin = DeviceInfoPlugin();
+
+    if (Platform.isAndroid) {
+      final androidInfo = await deviceInfoPlugin.androidInfo;
+      return androidInfo.version.release ?? '';
+    } else if (Platform.isIOS) {
+      final iOSInfo = await deviceInfoPlugin.iosInfo;
+      return iOSInfo.systemVersion ?? '';
+    }
+
+    return '';
   }
 }

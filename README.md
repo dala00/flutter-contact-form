@@ -6,7 +6,7 @@ contact_form is a client for the [Contact Nite](https://contact-nite.com) contac
 
 ```yaml
 dependencies:
-  flutter_contact: ^1.0.4
+  flutter_contact: ^1.0.5
 ```
 
 ## Getting Started

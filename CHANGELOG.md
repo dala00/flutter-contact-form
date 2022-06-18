@@ -1,3 +1,7 @@
+## 1.0.5
+
+Send OS Version
+
 ## 1.0.4
 
 Add sending metadata

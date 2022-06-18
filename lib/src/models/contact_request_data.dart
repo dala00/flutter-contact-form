@@ -9,6 +9,7 @@ part 'contact_request_data.g.dart';
 class ContactRequestData with _$ContactRequestData {
   factory ContactRequestData({
     required String platform,
+    required String osVersion,
     required String version,
     required String buildNumber,
     required String locale,
