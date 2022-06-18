@@ -23,6 +23,7 @@ class _$ContactRequestDataTearOff {
 
   _ContactRequestData call(
       {required String platform,
+      required String osVersion,
       required String version,
       required String buildNumber,
       required String locale,
@@ -30,6 +31,7 @@ class _$ContactRequestDataTearOff {
       required List<ContactFieldRequestData> fields}) {
     return _ContactRequestData(
       platform: platform,
+      osVersion: osVersion,
       version: version,
       buildNumber: buildNumber,
       locale: locale,
@@ -49,6 +51,7 @@ const $ContactRequestData = _$ContactRequestDataTearOff();
 /// @nodoc
 mixin _$ContactRequestData {
   String get platform => throw _privateConstructorUsedError;
+  String get osVersion => throw _privateConstructorUsedError;
   String get version => throw _privateConstructorUsedError;
   String get buildNumber => throw _privateConstructorUsedError;
   String get locale => throw _privateConstructorUsedError;
@@ -69,6 +72,7 @@ abstract class $ContactRequestDataCopyWith<$Res> {
       _$ContactRequestDataCopyWithImpl<$Res>;
   $Res call(
       {String platform,
+      String osVersion,
       String version,
       String buildNumber,
       String locale,
@@ -88,6 +92,7 @@ class _$ContactRequestDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? platform = freezed,
+    Object? osVersion = freezed,
     Object? version = freezed,
     Object? buildNumber = freezed,
     Object? locale = freezed,
@@ -98,6 +103,10 @@ class _$ContactRequestDataCopyWithImpl<$Res>
       platform: platform == freezed
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
+              as String,
+      osVersion: osVersion == freezed
+          ? _value.osVersion
+          : osVersion // ignore: cast_nullable_to_non_nullable
               as String,
       version: version == freezed
           ? _value.version
@@ -132,6 +141,7 @@ abstract class _$ContactRequestDataCopyWith<$Res>
   @override
   $Res call(
       {String platform,
+      String osVersion,
       String version,
       String buildNumber,
       String locale,
@@ -153,6 +163,7 @@ class __$ContactRequestDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? platform = freezed,
+    Object? osVersion = freezed,
     Object? version = freezed,
     Object? buildNumber = freezed,
     Object? locale = freezed,
@@ -163,6 +174,10 @@ class __$ContactRequestDataCopyWithImpl<$Res>
       platform: platform == freezed
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
+              as String,
+      osVersion: osVersion == freezed
+          ? _value.osVersion
+          : osVersion // ignore: cast_nullable_to_non_nullable
               as String,
       version: version == freezed
           ? _value.version
@@ -193,6 +208,7 @@ class __$ContactRequestDataCopyWithImpl<$Res>
 class _$_ContactRequestData implements _ContactRequestData {
   _$_ContactRequestData(
       {required this.platform,
+      required this.osVersion,
       required this.version,
       required this.buildNumber,
       required this.locale,
@@ -204,6 +220,8 @@ class _$_ContactRequestData implements _ContactRequestData {
 
   @override
   final String platform;
+  @override
+  final String osVersion;
   @override
   final String version;
   @override
@@ -217,7 +235,7 @@ class _$_ContactRequestData implements _ContactRequestData {
 
   @override
   String toString() {
-    return 'ContactRequestData(platform: $platform, version: $version, buildNumber: $buildNumber, locale: $locale, metadata: $metadata, fields: $fields)';
+    return 'ContactRequestData(platform: $platform, osVersion: $osVersion, version: $version, buildNumber: $buildNumber, locale: $locale, metadata: $metadata, fields: $fields)';
   }
 
   @override
@@ -227,6 +245,8 @@ class _$_ContactRequestData implements _ContactRequestData {
             other is _ContactRequestData &&
             (identical(other.platform, platform) ||
                 other.platform == platform) &&
+            (identical(other.osVersion, osVersion) ||
+                other.osVersion == osVersion) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.buildNumber, buildNumber) ||
                 other.buildNumber == buildNumber) &&
@@ -237,8 +257,15 @@ class _$_ContactRequestData implements _ContactRequestData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, platform, version, buildNumber,
-      locale, metadata, const DeepCollectionEquality().hash(fields));
+  int get hashCode => Object.hash(
+      runtimeType,
+      platform,
+      osVersion,
+      version,
+      buildNumber,
+      locale,
+      metadata,
+      const DeepCollectionEquality().hash(fields));
 
   @JsonKey(ignore: true)
   @override
@@ -254,6 +281,7 @@ class _$_ContactRequestData implements _ContactRequestData {
 abstract class _ContactRequestData implements ContactRequestData {
   factory _ContactRequestData(
       {required String platform,
+      required String osVersion,
       required String version,
       required String buildNumber,
       required String locale,
@@ -265,6 +293,8 @@ abstract class _ContactRequestData implements ContactRequestData {
 
   @override
   String get platform;
+  @override
+  String get osVersion;
   @override
   String get version;
   @override

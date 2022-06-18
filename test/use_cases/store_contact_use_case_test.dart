@@ -68,6 +68,7 @@ void main() {
     ];
     final contact = ContactRequestData(
       platform: 'ANDROID',
+      osVersion: '',
       version: packageInfo['version'],
       buildNumber: packageInfo['buildNumber'],
       locale: 'en',
